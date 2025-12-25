@@ -1,0 +1,5 @@
+{
+  "name": "sentinel-stream",
+  "description": "SentinelStream is an enterprise-grade video streaming solution featuring AI-driven content sensitivity analysis, role-based security, and seamless multi-tenant architecture.",
+  "requestFramePermissions": []
+}
