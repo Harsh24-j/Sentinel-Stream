@@ -1,68 +1,89 @@
 # SentinelStream
 
-**SentinelStream** is a secure, multi-tenant video streaming platform designed for enterprise environments. It integrates advanced AI processing to automatically analyze uploaded content for sensitivity, ensuring compliance and safety before content is distributed.
+**Enterprise-oriented video review and content-safety prototype built with React and Google Gemini.**
 
-## 🚀 Features
+SentinelStream models a multi-tenant video workflow in which uploaded content is processed, analyzed for safety signals, and presented with access controls and review states.
 
-### Core Functionality
-- **Secure Video Upload**: Encrypted upload pipeline for MP4, MOV, and WEBM formats.
-- **AI Sensitivity Analysis**: Powered by **Google Gemini 2.5**, the system automatically audits video metadata and content to detect violence, hate speech, or explicit material.
-- **Adaptive Streaming**: Seamless video playback using HTTP range requests and optimized delivery.
-- **Real-Time Progress Tracking**: Live updates for upload status, processing, and analysis stages.
+## Features
 
-### Enterprise Security
-- **Role-Based Access Control (RBAC)**:
-  - **Admin**: Full system access, bypass safety locks, user management.
-  - **Editor**: Upload and manage content for their organization.
-  - **Viewer**: Read-only access to approved videos.
-- **Multi-Tenancy**: Strict data isolation between different organizations.
-- **Content Flagging**: Automated locking of sensitive content with manual review workflows.
+### Content workflow
 
-## 🛠 Tech Stack
+- Video upload flow for MP4, MOV, and WEBM inputs
+- AI-assisted sensitivity analysis for uploaded content
+- Video playback with HTTP range-request support
+- Real-time processing/progress states
+- Safety overlays for flagged content
 
-- **Frontend**: React 19, Vite
-- **Styling**: Tailwind CSS, Lucide React Icons
-- **AI Integration**: Google GenAI SDK (Gemini 3 Flash & 2.5 models)
-- **State Management**: React Hooks & Context
-- **Deployment**: Edge-compatible static build
+### Access control
 
-## 🏗 Architecture
+- **Admin:** Full access, including review/bypass actions
+- **Editor:** Upload and manage organization content
+- **Viewer:** Read-only access to approved content
+- Organization-aware data separation
+- Flagged-content locking and manual review workflow
 
-1.  **Upload Layer**: Validates file types and mimics a multipart upload process to secure object storage.
-2.  **Processing Pipeline**:
-    *   **Stage 1**: Ingestion & Transcoding (Simulated).
-    *   **Stage 2**: Metadata Audit via Gemini API.
-    *   **Stage 3**: Content Classification (Safe/Flagged).
-3.  **Consumption Layer**: Custom video player with safety overlays for flagged content.
+## Architecture
 
-## 🚦 Getting Started
+```text
+Video Upload
+     |
+     v
+Ingestion / Processing
+     |
+     +----> Metadata analysis with Gemini
+     |
+     +----> Content classification
+     |
+     v
+Safe / Flagged state
+     |
+     v
+Video playback + access controls
+```
+
+> The current repository models some ingestion/transcoding behavior rather than providing a complete production media-processing pipeline. The README keeps those responsibilities clearly separated from implemented application behavior.
+
+## Tech Stack
+
+- **Frontend:** React 19, Vite
+- **Styling:** Tailwind CSS
+- **Icons:** Lucide React
+- **AI integration:** Google GenAI SDK / Gemini models
+- **State management:** React Hooks and Context
+- **Deployment:** Edge-compatible static build
+
+## Getting Started
 
 ### Prerequisites
-*   Node.js v18+
-*   Google Gemini API Key
 
-### Installation
+- Node.js 18+
+- Google Gemini API key
 
-1.  Clone the repository:
-    ```bash
-    git clone https://github.com/your-org/sentinel-stream.git
-    ```
-2.  Install dependencies:
-    ```bash
-    npm install
-    ```
-3.  Set up environment variables:
-    ```bash
-    export API_KEY="your_google_genai_api_key"
-    ```
-4.  Run the development server:
-    ```bash
-    npm run dev
-    ```
+### Install
 
-## 🔒 Safety & Compliance
+```bash
+npm install
+```
 
-SentinelStream enforces a "Safety First" approach. Videos flagged by the AI are immediately locked behind a warning screen. Only users with **Admin** privileges can bypass this lock or mark the video as safe after manual review.
+### Configure
 
----
-*Built for the Modern Enterprise.*
+Set the API key through the environment configuration expected by the application. Do not commit API keys or other secrets.
+
+### Run
+
+```bash
+npm run dev
+```
+
+## Project Focus
+
+The project explores how enterprise video workflows can combine AI-assisted content review with role-based access, organization-level isolation, processing states, and user-facing safety controls.
+
+## Current Scope vs. Production Extensions
+
+The repository is best understood as a prototype demonstrating the product and application workflow. A production implementation would require a full object-storage pipeline, real media transcoding, durable backend persistence, stronger observability, and a hardened authentication/authorization layer.
+
+## Author
+
+**Harsh Shrivastava**  
+[GitHub](https://github.com/Harsh24-j) · [LinkedIn](https://linkedin.com/in/harshshrivastava24)
