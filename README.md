@@ -67,12 +67,32 @@ npm install
 
 ### Configure
 
-Set the API key through the environment configuration expected by the application. Do not commit API keys or other secrets.
+Create a local `.env` file from the example:
+
+```bash
+cp .env.example .env
+```
+
+Then set:
+
+```text
+VITE_GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+The application reads this value through Vite's `import.meta.env` mechanism. Never commit the real key.
+
+> Because this is a client-side demo, a browser-delivered API key should be treated as an application credential with appropriate restrictions. A production design should move model calls behind a trusted backend.
 
 ### Run
 
 ```bash
 npm run dev
+```
+
+### Build
+
+```bash
+npm run build
 ```
 
 ## Project Focus
